@@ -43,7 +43,7 @@ export default function BookConsultation() {
                   <div className="icon"><i className="fas fa-phone-alt"></i></div>
                   <div>
                     <h4>Prefer to call?</h4>
-                    <p>+91 98765 43210</p>
+                    <p>90354 99777</p>
                   </div>
                 </div>
                 <div className="contact-detail-item">
