@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import Parallax from '../components/Parallax'
-import heroBg from '../assets/images/hero-bg.png'
+import heroBg from '../assets/images/hero-bg.webp'
+import { remote } from '../assets/images/remote'
 
 const services = [
   { icon: 'fa-solid fa-house-chimney', title: 'Residential Design', desc: 'Beautiful, functional homes tailored to your lifestyle and taste.' },
@@ -15,9 +16,9 @@ const services = [
 ]
 
 const portfolioItems = [
-  { img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80', title: 'Modern Luxury Villa', cat: 'Residential' },
-  { img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80', title: 'Executive Office Suite', cat: 'Commercial' },
-  { img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', title: 'Minimalist Penthouse', cat: 'Residential' },
+  { img: remote.photo_1600607687939_ce8a6c25118c, title: 'Modern Luxury Villa', cat: 'Residential' },
+  { img: remote.photo_1618220179428_22790b461013, title: 'Executive Office Suite', cat: 'Commercial' },
+  { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Minimalist Penthouse', cat: 'Residential' },
 ]
 
 export default function Home() {
@@ -134,7 +135,7 @@ export default function Home() {
           <div className="about-intro">
             <Parallax speed={0.12}>
             <div className="about-intro-image">
-              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="About Roopam Interiors" />
+              <img src={remote.photo_1616486338812_3dadae4b4ace} alt="About Roopam Interiors" />
               <div className="experience-badge">
                 <div className="number">15+</div>
                 <div className="label">Years Experience</div>

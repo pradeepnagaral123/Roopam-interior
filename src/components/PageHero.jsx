@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import heroBg from '../assets/images/hero-bg.png'
+import heroBg from '../assets/images/hero-bg.webp'
 
 export default function PageHero({ title, bgImage }) {
   const imgRef = useRef(null)

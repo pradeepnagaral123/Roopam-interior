@@ -1,12 +1,13 @@
 import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
+import { remote } from '../assets/images/remote'
 
 const team = [
-  { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80', name: 'Priya Sharma', role: 'Founder & Principal Designer', desc: 'Visionary designer with 20+ years of experience in luxury interiors.' },
-  { img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80', name: 'Arjun Mehta', role: 'Senior Architect', desc: 'Award-winning architect specializing in spatial design and planning.' },
-  { img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80', name: 'Ananya Patel', role: 'Interior Stylist', desc: 'Expert in color theory, textiles, and decorative arts.' },
-  { img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80', name: 'Vikram Singh', role: 'Project Manager', desc: 'Ensures seamless execution of every project from concept to completion.' },
+  { img: remote.photo_1573496359142_b8d87734a5a2, name: 'Priya Sharma', role: 'Founder & Principal Designer', desc: 'Visionary designer with 20+ years of experience in luxury interiors.' },
+  { img: remote.photo_1560250097_0b93528c311a, name: 'Arjun Mehta', role: 'Senior Architect', desc: 'Award-winning architect specializing in spatial design and planning.' },
+  { img: remote.photo_1580489944761_15a19d654956, name: 'Ananya Patel', role: 'Interior Stylist', desc: 'Expert in color theory, textiles, and decorative arts.' },
+  { img: remote.photo_1472099645785_5658abf4ff4e, name: 'Vikram Singh', role: 'Project Manager', desc: 'Ensures seamless execution of every project from concept to completion.' },
 ]
 
 export default function About() {
@@ -19,7 +20,7 @@ export default function About() {
         <div className="container">
           <div className="about-intro">
             <div className="about-intro-image">
-              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Our Studio" />
+              <img src={remote.photo_1616486338812_3dadae4b4ace} alt="Our Studio" />
               <div className="experience-badge">
                 <div className="number">15+</div>
                 <div className="label">Years Experience</div>

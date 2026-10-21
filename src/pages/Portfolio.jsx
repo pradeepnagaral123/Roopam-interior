@@ -2,19 +2,20 @@ import { useState } from 'react'
 import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
+import { remote } from '../assets/images/remote'
 
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Retail']
 
 const projects = [
-  { img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80', title: 'Modern Luxury Villa', cat: 'Residential', location: 'Mumbai' },
-  { img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80', title: 'Executive Office Suite', cat: 'Commercial', location: 'Delhi' },
-  { img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', title: 'Minimalist Penthouse', cat: 'Residential', location: 'Bangalore' },
-  { img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80', title: 'Boutique Hotel Lobby', cat: 'Hospitality', location: 'Goa' },
-  { img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80', title: 'Luxury Retail Store', cat: 'Retail', location: 'Delhi' },
-  { img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', title: 'Contemporary Apartment', cat: 'Residential', location: 'Pune' },
-  { img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80', title: 'Farmhouse Retreat', cat: 'Residential', location: 'Jaipur' },
-  { img: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80', title: 'Corporate Headquarters', cat: 'Commercial', location: 'Hyderabad' },
-  { img: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80', title: 'Beachfront Villa', cat: 'Residential', location: 'Goa' },
+  { img: remote.photo_1600607687939_ce8a6c25118c, title: 'Modern Luxury Villa', cat: 'Residential', location: 'Mumbai' },
+  { img: remote.photo_1618220179428_22790b461013, title: 'Executive Office Suite', cat: 'Commercial', location: 'Delhi' },
+  { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Minimalist Penthouse', cat: 'Residential', location: 'Bangalore' },
+  { img: remote.photo_1616594039964_ae9021a400a0, title: 'Boutique Hotel Lobby', cat: 'Hospitality', location: 'Goa' },
+  { img: remote.photo_1586023492125_27b2c045efd7, title: 'Luxury Retail Store', cat: 'Retail', location: 'Delhi' },
+  { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Contemporary Apartment', cat: 'Residential', location: 'Pune' },
+  { img: remote.photo_1600585154340_be6161a56a0c, title: 'Farmhouse Retreat', cat: 'Residential', location: 'Jaipur' },
+  { img: remote.photo_1600573472550_8090b5e0745e, title: 'Corporate Headquarters', cat: 'Commercial', location: 'Hyderabad' },
+  { img: remote.photo_1600585154084_4e5fe7c39198, title: 'Beachfront Villa', cat: 'Residential', location: 'Goa' },
 ]
 
 export default function Portfolio() {

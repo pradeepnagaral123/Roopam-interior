@@ -2,20 +2,21 @@ import { useState } from 'react'
 import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
+import { remote } from '../assets/images/remote'
 
 const images = [
-  { img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80', title: 'Living Room Design' },
-  { img: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80', title: 'Modern Kitchen' },
-  { img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', title: 'Bedroom Interior' },
-  { img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80', title: 'Dining Space' },
-  { img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80', title: 'Bathroom Luxury' },
-  { img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', title: 'Home Office' },
-  { img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80', title: 'Garden View' },
-  { img: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80', title: 'Staircase Design' },
-  { img: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=800&q=80', title: 'Open Plan Living' },
-  { img: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80', title: 'Minimalist Decor' },
-  { img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80', title: 'Luxury Bedroom' },
-  { img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80', title: 'Modern Bathroom' },
+  { img: remote.photo_1600607687939_ce8a6c25118c, title: 'Living Room Design' },
+  { img: remote.photo_1618220179428_22790b461013, title: 'Modern Kitchen' },
+  { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Bedroom Interior' },
+  { img: remote.photo_1616594039964_ae9021a400a0, title: 'Dining Space' },
+  { img: remote.photo_1586023492125_27b2c045efd7, title: 'Bathroom Luxury' },
+  { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Home Office' },
+  { img: remote.photo_1600585154340_be6161a56a0c, title: 'Garden View' },
+  { img: remote.photo_1600573472550_8090b5e0745e, title: 'Staircase Design' },
+  { img: remote.photo_1600585154084_4e5fe7c39198, title: 'Open Plan Living' },
+  { img: remote.photo_1600047509807_ba8f99d2cdde, title: 'Minimalist Decor' },
+  { img: remote.photo_1600210492486_724fe5c67fb0, title: 'Luxury Bedroom' },
+  { img: remote.photo_1600121848594_d8644e57abab, title: 'Modern Bathroom' },
 ]
 
 export default function Gallery() {
