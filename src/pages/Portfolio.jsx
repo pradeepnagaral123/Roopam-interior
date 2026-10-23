@@ -16,6 +16,9 @@ const projects = [
   { img: remote.photo_1600585154340_be6161a56a0c, title: 'Farmhouse Retreat', cat: 'Residential', location: 'Jaipur' },
   { img: remote.photo_1600573472550_8090b5e0745e, title: 'Corporate Headquarters', cat: 'Commercial', location: 'Hyderabad' },
   { img: remote.photo_1600585154084_4e5fe7c39198, title: 'Beachfront Villa', cat: 'Residential', location: 'Goa' },
+  { img: remote.photo_1566073771259_6a8506099945, title: 'Seaside Resort Lounge', cat: 'Hospitality', location: 'Udaipur' },
+  { img: remote.photo_1441986300917_64674bd600d8, title: 'Flagship Fashion Boutique', cat: 'Retail', location: 'Mumbai' },
+  { img: remote.photo_1497366216548_37526070297c, title: 'Modern Creative Studio', cat: 'Commercial', location: 'Bangalore' },
 ]
 
 export default function Portfolio() {
@@ -52,7 +55,7 @@ export default function Portfolio() {
           </div>
           <div className="portfolio-grid">
             {filtered.map((project, i) => (
-              <div key={i} className={`portfolio-item ${i === 0 ? 'tall' : ''}`}>
+              <div key={i} className="portfolio-item">
                 <img src={project.img} alt={project.title} />
                 <div className="overlay">
                   <p>{project.cat} — {project.location}</p>

@@ -17,8 +17,11 @@ const services = [
 
 const portfolioItems = [
   { img: remote.photo_1600607687939_ce8a6c25118c, title: 'Modern Luxury Villa', cat: 'Residential' },
-  { img: remote.photo_1618220179428_22790b461013, title: 'Executive Office Suite', cat: 'Commercial' },
+  { img: remote.photo_1600573472550_8090b5e0745e, title: 'Corporate Headquarters', cat: 'Commercial' },
   { img: remote.photo_1616486338812_3dadae4b4ace, title: 'Minimalist Penthouse', cat: 'Residential' },
+  { img: remote.photo_1616594039964_ae9021a400a0, title: 'Boutique Hotel Lobby', cat: 'Hospitality' },
+  { img: remote.photo_1586023492125_27b2c045efd7, title: 'Luxury Retail Store', cat: 'Retail' },
+  { img: remote.photo_1600585154340_be6161a56a0c, title: 'Farmhouse Retreat', cat: 'Residential' },
 ]
 
 export default function Home() {
@@ -109,17 +112,15 @@ export default function Home() {
             <h2 className="section-title">Featured Projects</h2>
             <p className="section-subtitle">Explore our curated selection of signature projects that showcase our design excellence.</p>
           </div>
-          <div className="portfolio-grid">
+          <div className="portfolio-grid home-portfolio-grid">
             {portfolioItems.map((item, i) => (
-              <Parallax key={i} speed={0.15}>
-              <div className="portfolio-item">
+              <div key={i} className="portfolio-item">
                 <img src={item.img} alt={item.title} />
                 <div className="overlay">
                   <p>{item.cat}</p>
                   <h3>{item.title}</h3>
                 </div>
               </div>
-              </Parallax>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
