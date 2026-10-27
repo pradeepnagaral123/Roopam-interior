@@ -1,10 +1,88 @@
+import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function BookConsultation() {
+  const [selectedDate, setSelectedDate] = useState('')
+  const [showCalendar, setShowCalendar] = useState(false)
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const calendarRef = useRef(null)
+  const [projectType, setProjectType] = useState('')
+  const [showProjectType, setShowProjectType] = useState(false)
+  const projectTypeRef = useRef(null)
+  const [projectBudget, setProjectBudget] = useState('')
+  const [showProjectBudget, setShowProjectBudget] = useState(false)
+  const projectBudgetRef = useRef(null)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     alert('Thank you for booking a consultation! We will contact you within 24 hours to confirm your appointment.')
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+        setShowCalendar(false)
+      }
+      if (projectTypeRef.current && !projectTypeRef.current.contains(event.target)) {
+        setShowProjectType(false)
+      }
+      if (projectBudgetRef.current && !projectBudgetRef.current.contains(event.target)) {
+        setShowProjectBudget(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const projectTypes = [
+    { value: 'residential', label: 'Residential Design' },
+    { value: 'commercial', label: 'Commercial Design' },
+    { value: 'renovation', label: 'Renovation' },
+    { value: 'consultation', label: 'Design Consultation' },
+    { value: 'other', label: 'Other' },
+  ]
+
+  const projectBudgets = [
+    { value: 'under-5l', label: 'Under ₹5,00,000' },
+    { value: '5-10l', label: '₹5,00,000 — ₹10,00,000' },
+    { value: '10-25l', label: '₹10,00,000 — ₹25,00,000' },
+    { value: '25-50l', label: '₹25,00,000 — ₹50,00,000' },
+    { value: 'above-50l', label: 'Above ₹50,00,000' },
+  ]
+
+  const getDaysInMonth = (date) => {
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    return new Date(year, month + 1, 0).getDate()
+  }
+
+  const getFirstDayOfMonth = (date) => {
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    return new Date(year, month, 1).getDay()
+  }
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  const formatDate = (date) => {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${day}-${month}-${year}`
+  }
+
+  const handleDateSelect = (day) => {
+    const newDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day)
+    const year = newDate.getFullYear()
+    const month = String(newDate.getMonth() + 1).padStart(2, '0')
+    const d = String(day).padStart(2, '0')
+    setSelectedDate(`${d}-${month}-${year}`)
+    setShowCalendar(false)
+  }
+
+  const changeMonth = (offset) => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + offset, 1))
   }
 
   return (
@@ -35,6 +113,25 @@ export default function BookConsultation() {
                 <div className="benefit-item">
                   <div className="icon"><i className="fas fa-check"></i></div>
                   <span>No obligation quote</span>
+                </div>
+              </div>
+
+              <div className="why-choose-consult" style={{ marginTop: '40px', padding: '28px', background: 'var(--accent)', borderRadius: 'var(--radius)' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: '16px', color: 'var(--primary)' }}>Why Choose Us</h3>
+                <p style={{ color: 'var(--text-light)', marginBottom: '18px' }}>With 15+ years of experience, we've transformed 500+ spaces across residential and commercial projects with timeless designs.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <i className="fas fa-award" style={{ color: 'var(--secondary)' }}></i>
+                    <span style={{ color: 'var(--text)' }}>Award-winning design studio</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <i className="fas fa-project-diagram" style={{ color: 'var(--secondary)' }}></i>
+                    <span style={{ color: 'var(--text)' }}>End-to-end project management</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <i className="fas fa-hand-holding-heart" style={{ color: 'var(--secondary)' }}></i>
+                    <span style={{ color: 'var(--text)' }}>Personalized approach</span>
+                  </div>
                 </div>
               </div>
 
@@ -76,34 +173,69 @@ export default function BookConsultation() {
                   <label>Phone Number *</label>
                   <input type="tel" placeholder="Your phone number" required />
                 </div>
-                <div className="form-group">
+                <div className="form-group" style={{ position: 'relative' }} ref={calendarRef}>
                   <label>Preferred Date</label>
-                  <input type="date" />
+                  <div style={{ position: 'relative' }}>
+                    <input type="text" readOnly value={selectedDate} onClick={() => setShowCalendar(!showCalendar)} placeholder="Select date" style={{ cursor: 'pointer', paddingRight: '40px' }} />
+                    <i className="fas fa-calendar-alt" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none' }}></i>
+                  </div>
+                  {showCalendar && (
+                    <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '280px', padding: '16px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                        <button type="button" onClick={() => changeMonth(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--secondary)', fontSize: '1rem' }}><i className="fas fa-chevron-left"></i></button>
+                        <span style={{ fontWeight: '600', color: 'var(--primary)' }}>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</span>
+                        <button type="button" onClick={() => changeMonth(1)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--secondary)', fontSize: '1rem' }}><i className="fas fa-chevron-right"></i></button>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', marginBottom: '8px' }}>
+                        {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(d => <div key={d} style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-light)', padding: '4px' }}>{d}</div>)}
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>
+                        {Array(getFirstDayOfMonth(currentMonth)).fill(null).map((_, i) => <div key={`empty-${i}`} />)}
+                        {Array(getDaysInMonth(currentMonth)).fill(null).map((_, i) => {
+                          const day = i + 1
+                          const dateObj = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day)
+                          const dateStr = `${String(day).padStart(2, '0')}-${String(dateObj.getMonth() + 1).padStart(2, '0')}-${dateObj.getFullYear()}`
+                          const isSelected = selectedDate === dateStr
+                          const today = new Date()
+                          const isToday = today.getDate() === day && today.getMonth() === currentMonth.getMonth() && today.getFullYear() === currentMonth.getFullYear()
+                          return (
+                            <button type="button" key={day} onClick={() => handleDateSelect(day)} style={{ padding: '8px', border: isToday && !isSelected ? '1px solid #6b9f81' : 'none', background: isSelected ? '#6b9f81' : 'none', color: isSelected ? '#fff' : isToday ? '#6b9f81' : 'var(--text)', borderRadius: '6px', cursor: 'pointer', fontSize: '0.875rem', transition: 'all 0.2s', fontWeight: isToday ? '600' : '400' }} onMouseEnter={(e) => { if (!isSelected) e.target.style.background = 'var(--accent)' }} onMouseLeave={(e) => { if (!isSelected) e.target.style.background = isToday ? 'none' : 'none' }}>{day}</button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              <div className="form-group">
+              <div className="form-group" style={{ position: 'relative' }} ref={projectTypeRef}>
                 <label>Project Type *</label>
-                <select required>
-                  <option value="">Select project type</option>
-                  <option value="residential">Residential Design</option>
-                  <option value="commercial">Commercial Design</option>
-                  <option value="renovation">Renovation</option>
-                  <option value="consultation">Design Consultation</option>
-                  <option value="other">Other</option>
-                </select>
+                <div style={{ position: 'relative' }}>
+                  <input type="text" readOnly value={projectTypes.find(p => p.value === projectType)?.label || ''} onClick={() => setShowProjectType(!showProjectType)} placeholder="Select project type" required style={{ cursor: 'pointer', paddingRight: '40px' }} />
+                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
+                </div>
+                {showProjectType && (
+                  <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '100%', overflow: 'hidden' }}>
+                    {projectTypes.map(pt => (
+                      <div key={pt.value} onClick={() => { setProjectType(pt.value); setShowProjectType(false) }} style={{ padding: '12px 16px', cursor: 'pointer', color: 'var(--text)', borderBottom: pt.value === 'other' ? 'none' : '1px solid var(--border)', transition: 'all 0.2s' }} onMouseEnter={(e) => e.target.style.background = 'var(--accent)'} onMouseLeave={(e) => e.target.style.background = 'transparent'}>{pt.label}</div>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              <div className="form-group">
+              <div className="form-group" style={{ position: 'relative' }} ref={projectBudgetRef}>
                 <label>Project Budget</label>
-                <select>
-                  <option value="">Select budget range</option>
-                  <option value="under-5l">Under ₹5,00,000</option>
-                  <option value="5-10l">₹5,00,000 — ₹10,00,000</option>
-                  <option value="10-25l">₹10,00,000 — ₹25,00,000</option>
-                  <option value="25-50l">₹25,00,000 — ₹50,00,000</option>
-                  <option value="above-50l">Above ₹50,00,000</option>
-                </select>
+                <div style={{ position: 'relative' }}>
+                  <input type="text" readOnly value={projectBudgets.find(p => p.value === projectBudget)?.label || ''} onClick={() => setShowProjectBudget(!showProjectBudget)} placeholder="Select budget range" style={{ cursor: 'pointer', paddingRight: '40px' }} />
+                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
+                </div>
+                {showProjectBudget && (
+                  <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '100%', overflow: 'hidden' }}>
+                    {projectBudgets.map(pb => (
+                      <div key={pb.value} onClick={() => { setProjectBudget(pb.value); setShowProjectBudget(false) }} style={{ padding: '12px 16px', cursor: 'pointer', color: 'var(--text)', borderBottom: pb.value === 'above-50l' ? 'none' : '1px solid var(--border)', transition: 'all 0.2s' }} onMouseEnter={(e) => e.target.style.background = 'var(--accent)'} onMouseLeave={(e) => e.target.style.background = 'transparent'}>{pb.label}</div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="form-group">

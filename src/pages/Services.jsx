@@ -1,17 +1,18 @@
 import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
+import { remote } from '../assets/images/remote'
 
 const services = [
-  { icon: 'fa-solid fa-house-chimney', title: 'Residential Design', desc: 'Full-service residential interior design for apartments, villas, and homes. We create personalized spaces that reflect your lifestyle and taste, from concept development to final installation.' },
-  { icon: 'fa-solid fa-building', title: 'Commercial Design', desc: 'Strategic commercial interiors for offices, retail spaces, restaurants, and hospitality venues. Our designs enhance brand identity and create memorable experiences for your clients.' },
-  { icon: 'fa-solid fa-pen-ruler', title: 'Space Planning', desc: 'Optimized spatial layouts that maximize functionality, flow, and efficiency. Our space planning service ensures every square foot serves a purpose.' },
-  { icon: 'fa-solid fa-couch', title: 'Custom Furniture', desc: 'Bespoke furniture design and manufacturing. We create unique pieces that perfectly fit your space and style, crafted by skilled artisans using premium materials.' },
-  { icon: 'fa-solid fa-lightbulb', title: 'Lighting Design', desc: 'Comprehensive lighting solutions that set the perfect mood. From ambient to accent lighting, we design layered schemes that transform your space.' },
-  { icon: 'fa-solid fa-palette', title: 'Color Consultation', desc: 'Expert color selection and palette development. We help you choose the perfect colors to create the desired atmosphere and emotional response in your space.' },
-  { icon: 'fa-solid fa-tree', title: 'Interior Landscaping', desc: 'Biophilic design integration with indoor plants and green walls. We bring nature indoors to improve air quality and create calming environments.' },
-  { icon: 'fa-solid fa-layer-group', title: 'Renovation & Styling', desc: 'Complete renovation services and home styling. We breathe new life into existing spaces with modern updates and thoughtful design interventions.' },
-  { icon: 'fa-solid fa-drafting-compass', title: 'Consultation Services', desc: 'Expert design consultation for specific project needs. Get professional advice on materials, layouts, color schemes, and design direction.' },
+  { icon: 'fa-solid fa-house-chimney', title: 'Residential Design', desc: 'Full-service residential interior design for apartments, villas, and homes. We create personalized spaces that reflect your lifestyle and taste, from concept development to final installation.', img: remote.photo_1600607687939_ce8a6c25118c },
+  { icon: 'fa-solid fa-building', title: 'Commercial Design', desc: 'Strategic commercial interiors for offices, retail spaces, restaurants, and hospitality venues. Our designs enhance brand identity and create memorable experiences for your clients.', img: remote.photo_1600573472550_8090b5e0745e },
+  { icon: 'fa-solid fa-pen-ruler', title: 'Space Planning', desc: 'Optimized spatial layouts that maximize functionality, flow, and efficiency. Our space planning service ensures every square foot serves a purpose.', img: remote.photo_1616486338812_3dadae4b4ace },
+  { icon: 'fa-solid fa-couch', title: 'Custom Furniture', desc: 'Bespoke furniture design and manufacturing. We create unique pieces that perfectly fit your space and style, crafted by skilled artisans using premium materials.', img: remote.photo_1616594039964_ae9021a400a0 },
+  { icon: 'fa-solid fa-lightbulb', title: 'Lighting Design', desc: 'Comprehensive lighting solutions that set the perfect mood. From ambient to accent lighting, we design layered schemes that transform your space.', img: remote.photo_1586023492125_27b2c045efd7 },
+  { icon: 'fa-solid fa-palette', title: 'Color Consultation', desc: 'Expert color selection and palette development. We help you choose the perfect colors to create the desired atmosphere and emotional response in your space.', img: remote.photo_1600585154340_be6161a56a0c },
+  { icon: 'fa-solid fa-tree', title: 'Interior Landscaping', desc: 'Biophilic design integration with indoor plants and green walls. We bring nature indoors to improve air quality and create calming environments.', img: remote.photo_1566073771259_6a8506099945 },
+  { icon: 'fa-solid fa-layer-group', title: 'Renovation & Styling', desc: 'Complete renovation services and home styling. We breathe new life into existing spaces with modern updates and thoughtful design interventions.', img: remote.photo_1600585154084_4e5fe7c39198 },
+  { icon: 'fa-solid fa-drafting-compass', title: 'Consultation Services', desc: 'Expert design consultation for specific project needs. Get professional advice on materials, layouts, color schemes, and design direction.', img: remote.photo_1497366216548_37526070297c },
 ]
 
 const steps = [
@@ -37,6 +38,7 @@ export default function Services() {
           <div className="services-grid">
             {services.map((s, i) => (
               <div key={i} className="service-card">
+                {s.img && <div className="service-card-bg" style={{ backgroundImage: `url(${s.img})` }}></div>}
                 <div className="icon"><i className={s.icon}></i></div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>

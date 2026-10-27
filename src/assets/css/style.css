@@ -357,7 +357,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
+  opacity: 0.75;
   will-change: transform;
 }
 
@@ -365,7 +365,7 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(29, 29, 29, 0.03) 0%, rgba(45, 45, 45, 0.02) 50%, rgba(29, 29, 29, 0.03) 100%);
+  background: linear-gradient(90deg, rgba(29, 29, 29, 0.3) 0%, rgba(29, 29, 29, 0.12) 65%, transparent 100%);
 }
 
 .hero .container {
@@ -751,11 +751,11 @@ img {
   opacity: 0;
   transition: var(--transition);
   z-index: 0;
-  filter: brightness(0.95) saturate(1.05);
+  filter: brightness(0.98) saturate(1.02);
 }
 
 .service-card:hover .service-card-bg {
-  opacity: 0.16;
+  opacity: 0.14;
 }
 
 .service-card > *:not(.service-card-bg) {
@@ -1301,6 +1301,30 @@ img {
   outline: none;
 }
 
+.form-group input[type="date"] {
+  accent-color: #6b9f81;
+}
+
+.custom-date {
+  color-scheme: light;
+}
+
+.custom-date::-webkit-calendar-picker-indicator {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b9f81' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E") center/contain no-repeat;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: var(--text-light);
+  padding: 0 0.3em;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: var(--text);
+}
+
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -1322,7 +1346,7 @@ img {
 /* Book Consultation Page */
 .consultation-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
   gap: 60px;
   align-items: start;
 }
@@ -1775,8 +1799,11 @@ img {
   .section { padding: 80px 0; }
   .hero-title { font-size: 3.2rem; }
   .page-hero-title { font-size: 2.8rem; }
-  .about-intro { grid-template-columns: 1fr; gap: 40px; }
-  .about-intro-image img { height: 400px; }
+  .about-intro { grid-template-columns: 1fr; gap: 40px; direction: ltr !important; align-items: stretch; }
+  .about-intro-text { height: auto !important; justify-content: flex-start !important; direction: ltr !important; }
+  .about-intro-image { height: 420px !important; overflow: hidden !important; direction: ltr !important; }
+  .about-intro-image img { height: 100% !important; }
+  .about-intro-image .experience-badge { left: 20px !important; bottom: 30px !important; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { columns: 2; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1811,7 +1838,7 @@ img {
   .navbar .mobile-btn { display: inline-flex; }
   .nav-toggle { display: flex; z-index: 1; }
   
-  .hero .container { margin-left: 0; }
+  .hero .container { margin-left: 0; padding: 0 20px; }
   .hero-content { text-align: center; margin: 0 auto; }
   .hero-desc { margin: 0 auto 44px; }
   .hero-actions { justify-content: center; }
@@ -1824,6 +1851,17 @@ img {
   .page-hero-title { font-size: 2.2rem; }
   .page-hero { padding: 140px 0 60px; }
   
+  .about-intro { grid-template-columns: 1fr !important; gap: 32px !important; direction: ltr !important; }
+  .about-intro-text { direction: ltr !important; height: auto !important; justify-content: flex-start !important; }
+  .about-intro-text h2 { font-size: 2rem; }
+  .about-intro-text h2 br { display: none; }
+  .about-intro-image { height: 320px !important; direction: ltr !important; overflow: hidden !important; }
+  .about-intro-image img { height: 100% !important; }
+  .about-intro-image .experience-badge { left: 16px !important; bottom: 20px !important; }
+  .about-features { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .about-feature-item { aspect-ratio: auto !important; padding: 16px !important; flex-direction: row !important; justify-content: flex-start !important; text-align: left !important; gap: 14px !important; }
+  .about-feature-item .icon { margin: 0 !important; }
+  
   .services-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
   .portfolio-grid { columns: 1; }
@@ -1831,7 +1869,6 @@ img {
   .gallery-item img { min-height: 200px; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
-  .about-features { grid-template-columns: 1fr; }
   .consultation-benefits { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form,
@@ -1852,7 +1889,10 @@ img {
   .section-title { font-size: 1.8rem; }
   .page-hero-title { font-size: 1.8rem; }
   .gallery-grid { grid-template-columns: 1fr; }
-  .about-intro-image .experience-badge { padding: 16px 24px; }
-  .about-intro-image .experience-badge .number { font-size: 1.8rem; }
-  .about-intro-image img { height: 300px; }
+  .about-intro-image { height: 260px !important; }
+  .about-intro-image .experience-badge { padding: 14px 20px; left: 12px !important; bottom: 16px !important; }
+  .about-intro-image .experience-badge .number { font-size: 1.6rem; }
+  .about-intro-image img { height: 100% !important; }
+  .about-intro-text h2 { font-size: 1.7rem; }
+  .service-card { padding: 28px 24px; }
 }

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
@@ -24,9 +24,16 @@ const portfolioItems = [
   { img: remote.photo_1600585154340_be6161a56a0c, title: 'Farmhouse Retreat', cat: 'Residential' },
 ]
 
+const testimonials = [
+  { text: '"Exceptional design and flawless execution. Our home has never looked better."', author: '— Priya Sharma, Mumbai', img: remote.photo_1580489944761_15a19d654956 },
+  { text: '"Professional team, great attention to detail. Highly recommended for commercial projects."', author: '— Rahul Mehta, Delhi', img: remote.photo_1472099645785_5658abf4ff4e },
+  { text: '"Transformed our space beyond expectations. Timeless elegance with modern functionality."', author: '— Anjali Verma, Bangalore', img: remote.photo_1438761681033_6461ffad8d80 },
+]
+
 export default function Home() {
   const imgRef = useRef(null)
   const contentRef = useRef(null)
+  const [testimonialIndex, setTestimonialIndex] = useState(0)
 
   useEffect(() => {
     const img = imgRef.current
@@ -171,6 +178,42 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
             <Link to="/portfolio" className="btn btn-outline">View Full Portfolio <i className="fas fa-arrow-right"></i></Link>
+          </div>
+        </div>
+      </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+      <section className="section" style={{ background: 'var(--accent)', marginTop: '-40px', paddingTop: '60px', paddingBottom: '60px' }}>
+        <div className="container">
+          <div style={{ background: '#ffffff', borderRadius: '20px', padding: '40px 60px', boxShadow: '0 25px 60px rgba(0, 0, 0, 0.08)', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '40px', alignItems: 'center' }}>
+            <div>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.9rem', color: 'var(--primary)', lineHeight: '1.25', marginBottom: '0' }}>
+                Trusted by home owners<br />and businesses alike
+              </h2>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <button onClick={() => setTestimonialIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))} style={{ background: '#D8C8B2', border: 'none', width: '46px', height: '46px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#557165', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '32px', background: '#D8C8B2', padding: '28px 65px 28px 95px', borderRadius: '16px', boxShadow: '0 15px 40px rgba(216, 200, 178, 0.25)', flex: 1, height: '180px', position: 'relative', border: '1px solid rgba(255,255,255,0.4)' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', gap: '4px', marginBottom: '10px', color: '#557165' }}>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                  </div>
+                  <p style={{ color: '#2d2d2d', fontSize: '1.05rem', marginBottom: '8px', fontStyle: 'italic', lineHeight: '1.7' }}>{testimonials[testimonialIndex].text}</p>
+                  <p style={{ color: '#557165', fontSize: '0.95rem', fontWeight: '600' }}>{testimonials[testimonialIndex].author}</p>
+                </div>
+                <img src={testimonials[testimonialIndex].img} alt="User" style={{ width: '68px', height: '68px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #557165', flexShrink: 0, position: 'absolute', right: '22px' }} />
+              </div>
+              <button onClick={() => setTestimonialIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))} style={{ background: '#D8C8B2', border: 'none', width: '46px', height: '46px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#557165', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </section>
