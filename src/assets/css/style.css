@@ -743,6 +743,30 @@ img {
   overflow: hidden;
 }
 
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 0;
+  filter: brightness(0.95) saturate(1.05);
+}
+
+.service-card:hover .service-card-bg {
+  opacity: 0.16;
+}
+
+.service-card > *:not(.service-card-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card:hover {
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .service-card::before {
   content: '';
   position: absolute;
@@ -764,6 +788,7 @@ img {
   transform: translateY(-8px);
   box-shadow: var(--shadow-hover);
   border-color: transparent;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .service-card .icon {
