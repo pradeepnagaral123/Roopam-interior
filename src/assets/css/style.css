@@ -1817,6 +1817,28 @@ input[type="date"]::-webkit-datetime-edit-year-field {
   .process-steps::before { display: none; }
 }
 
+@media (max-width: 968px) {
+  .testimonial-strip {
+    grid-template-columns: 1fr !important;
+    padding: 32px 28px !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-strip {
+    padding: 28px 20px !important;
+  }
+  .testimonial-row {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .testimonial-row::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar .nav-links {
     position: fixed;
@@ -1895,4 +1917,7 @@ input[type="date"]::-webkit-datetime-edit-year-field {
   .about-intro-image img { height: 100% !important; }
   .about-intro-text h2 { font-size: 1.7rem; }
   .service-card { padding: 28px 24px; }
+  .testimonial-strip { padding: 24px 18px !important; }
+  .testimonial-strip h2 { font-size: 1.6rem !important; }
+  .testimonial-strip h2 br { display: none; }
 }
