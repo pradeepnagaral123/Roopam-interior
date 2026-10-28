@@ -43,7 +43,7 @@ export default function Home() {
     const onScroll = () => {
       const speed = 0.3
       const y = window.scrollY * speed
-      img.style.transform = `translateY(${y}px) scale(1.1)`
+      img.style.transform = `translateY(${y}px)`
       if (content) {
         const contentY = window.scrollY * speed * 0.5
         content.style.transform = `translateY(${contentY}px)`
