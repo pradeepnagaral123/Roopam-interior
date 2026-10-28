@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import heroBg from '../assets/images/hero-bg.webp'
+import heroBg from '../assets/images/Minimalist Green Wall Living Room.webp'
 
 export default function PageHero({ title, bgImage }) {
   const imgRef = useRef(null)
@@ -11,7 +11,7 @@ export default function PageHero({ title, bgImage }) {
     const onScroll = () => {
       const speed = 0.3
       const y = window.scrollY * speed
-      img.style.transform = `translateY(${y}px) scale(1.1)`
+      img.style.transform = `translateY(${y}px)`
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -20,7 +20,7 @@ export default function PageHero({ title, bgImage }) {
   return (
     <section className="page-hero">
       <div className="page-hero-bg">
-        <img ref={imgRef} src={bgImage || heroBg} alt={title} />
+        <img ref={imgRef} src={bgImage || heroBg} alt={title} style={{ objectPosition: 'left center' }} />
       </div>
       <div className="container">
         <h1 className="page-hero-title">{title}</h1>
