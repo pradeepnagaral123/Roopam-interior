@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import Parallax from '../components/Parallax'
-import heroBg from '../assets/images/Minimalist Green Wall Living Room.png'
+import heroBg from '../assets/images/Minimalist Green Wall Living Room.webp'
 import { remote } from '../assets/images/remote'
 
 const services = [
