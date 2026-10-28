@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import Parallax from '../components/Parallax'
-import heroBg from '../assets/images/hero-bg.webp'
+import heroBg from '../assets/images/Minimalist Green Wall Living Room.png'
 import { remote } from '../assets/images/remote'
 
 const services = [
@@ -65,7 +65,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-bg">
-          <img ref={imgRef} src={heroBg} alt="Premium Interior Design" />
+          <img ref={imgRef} src={heroBg} alt="Minimalist Green Wall Living Room" />
         </div>
         <div className="container">
           <div ref={contentRef} className="hero-content">
