@@ -177,7 +177,7 @@ export default function BookConsultation() {
                   <label>Preferred Date</label>
                   <div style={{ position: 'relative' }}>
                     <input type="text" readOnly value={selectedDate} onClick={() => setShowCalendar(!showCalendar)} placeholder="Select date" style={{ cursor: 'pointer', paddingRight: '40px' }} />
-                    <i className="fas fa-calendar-alt" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none' }}></i>
+                    <i className="fas fa-calendar-alt" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--secondary)', pointerEvents: 'none' }}></i>
                   </div>
                   {showCalendar && (
                     <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '280px', padding: '16px' }}>
@@ -199,7 +199,7 @@ export default function BookConsultation() {
                           const today = new Date()
                           const isToday = today.getDate() === day && today.getMonth() === currentMonth.getMonth() && today.getFullYear() === currentMonth.getFullYear()
                           return (
-                            <button type="button" key={day} onClick={() => handleDateSelect(day)} style={{ padding: '8px', border: isToday && !isSelected ? '1px solid #6b9f81' : 'none', background: isSelected ? '#6b9f81' : 'none', color: isSelected ? '#fff' : isToday ? '#6b9f81' : 'var(--text)', borderRadius: '6px', cursor: 'pointer', fontSize: '0.875rem', transition: 'all 0.2s', fontWeight: isToday ? '600' : '400' }} onMouseEnter={(e) => { if (!isSelected) e.target.style.background = 'var(--accent)' }} onMouseLeave={(e) => { if (!isSelected) e.target.style.background = isToday ? 'none' : 'none' }}>{day}</button>
+                            <button type="button" key={day} onClick={() => handleDateSelect(day)} style={{ padding: '8px', border: isToday && !isSelected ? '1px solid var(--secondary)' : 'none', background: isSelected ? 'var(--secondary)' : 'none', color: isSelected ? '#fff' : isToday ? 'var(--secondary)' : 'var(--text)', borderRadius: '6px', cursor: 'pointer', fontSize: '0.875rem', transition: 'all 0.2s', fontWeight: isToday ? '600' : '400' }} onMouseEnter={(e) => { if (!isSelected) e.target.style.background = 'var(--accent)' }} onMouseLeave={(e) => { if (!isSelected) e.target.style.background = isToday ? 'none' : 'none' }}>{day}</button>
                           )
                         })}
                       </div>
@@ -212,7 +212,7 @@ export default function BookConsultation() {
                 <label>Project Type *</label>
                 <div style={{ position: 'relative' }}>
                   <input type="text" readOnly value={projectTypes.find(p => p.value === projectType)?.label || ''} onClick={() => setShowProjectType(!showProjectType)} placeholder="Select project type" required style={{ cursor: 'pointer', paddingRight: '40px' }} />
-                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
+                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--secondary)', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
                 </div>
                 {showProjectType && (
                   <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '100%', overflow: 'hidden' }}>
@@ -227,7 +227,7 @@ export default function BookConsultation() {
                 <label>Project Budget</label>
                 <div style={{ position: 'relative' }}>
                   <input type="text" readOnly value={projectBudgets.find(p => p.value === projectBudget)?.label || ''} onClick={() => setShowProjectBudget(!showProjectBudget)} placeholder="Select budget range" style={{ cursor: 'pointer', paddingRight: '40px' }} />
-                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: '#6b9f81', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
+                  <i className="fas fa-chevron-down" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--secondary)', pointerEvents: 'none', fontSize: '0.8rem' }}></i>
                 </div>
                 {showProjectBudget && (
                   <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: '8px', background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-hover)', zIndex: 1000, width: '100%', overflow: 'hidden' }}>

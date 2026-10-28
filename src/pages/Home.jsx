@@ -65,10 +65,10 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-bg">
-          <img ref={imgRef} src={heroBg} alt="Minimalist Green Wall Living Room" />
+          <img ref={imgRef} src={heroBg} alt="Minimalist Green Wall Living Room" style={{ objectPosition: 'left center' }} />
         </div>
         <div className="container">
-          <div ref={contentRef} className="hero-content">
+          <div ref={contentRef} className="hero-content" style={{ marginLeft: '0' }}>
             <span className="hero-tag">Premium Interior Design Studio</span>
             <h1 className="hero-title">Designing Spaces That <span>Inspire</span> & Elevate</h1>
             <p className="hero-desc">We craft bespoke interiors that blend timeless elegance with modern sophistication, transforming your vision into extraordinary living spaces.</p>
@@ -91,7 +91,7 @@ export default function Home() {
             <Parallax speed={0.12}>
             <div className="about-intro-image" style={{ direction: 'ltr', height: '100%', position: 'relative', overflow: 'visible', borderRadius: '20px' }}>
               <img src={remote.photo_1616486338812_3dadae4b4ace} alt="About Roopam Interiors" style={{ height: '100%', objectFit: 'cover', borderRadius: '20px', display: 'block' }} />
-              <div className="experience-badge" style={{ position: 'absolute', left: '-40px', bottom: '40px', zIndex: 10, background: '#6b9f81', color: '#ffffff', border: 'none', boxShadow: '0 4px 12px rgba(107, 159, 129, 0.4)', borderRadius: '14px', padding: '18px 26px' }}>
+              <div className="experience-badge" style={{ position: 'absolute', left: '-40px', bottom: '40px', zIndex: 10, background: 'var(--secondary)', color: '#ffffff', border: 'none', boxShadow: '0 4px 12px rgba(107, 159, 129, 0.4)', borderRadius: '14px', padding: '18px 26px' }}>
                 <div className="number" style={{ color: '#ffffff' }}>15+</div>
                 <div className="label" style={{ color: '#ffffff' }}>Years Experience</div>
               </div>
