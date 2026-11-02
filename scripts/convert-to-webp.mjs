@@ -1,12 +1,4 @@
 #!/usr/bin/env node
-/**
- * Converts every raster image in src/ and public/ to WebP, in place.
- *
- *   node scripts/convert-to-webp.mjs            # convert + delete originals
- *   node scripts/convert-to-webp.mjs --keep     # convert, keep originals
- *
- * SVG is intentionally skipped: it is vector and stays sharp at any size.
- */
 import { readdir, stat, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
@@ -65,7 +57,6 @@ async function convert(file) {
 
   let buffer
   if (hasAlpha) {
-    // PNG/GIF sources are already lossless, so keep them lossless to avoid quality loss.
     buffer = await sharp(file, { animated: true }).webp({ lossless: true, effort: 6 }).toBuffer()
     if (buffer.length > (await stat(file)).size) {
       const lossy = await sharp(file, { animated: true })

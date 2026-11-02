@@ -4,6 +4,7 @@ import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import Parallax from '../components/Parallax'
 import heroBg from '../assets/images/Minimalist Green Wall Living Room.webp'
+import mobileHeroBg from '../assets/images/mobile.png'
 import { remote } from '../assets/images/remote'
 
 const services = [
@@ -28,6 +29,8 @@ const testimonials = [
   { text: '"Exceptional design and flawless execution. Our home has never looked better."', author: '— Priya Sharma, Mumbai', img: remote.photo_1580489944761_15a19d654956 },
   { text: '"Professional team, great attention to detail. Highly recommended for commercial projects."', author: '— Rahul Mehta, Delhi', img: remote.photo_1472099645785_5658abf4ff4e },
   { text: '"Transformed our space beyond expectations. Timeless elegance with modern functionality."', author: '— Anjali Verma, Bangalore', img: remote.photo_1438761681033_6461ffad8d80 },
+  { text: '"Incredible attention to detail and creative vision. Our office space is now a perfect blend of style and productivity."', author: '— Vikram Singh, Gurgaon', img: remote.photo_1507003211169_0a1dd7228f2d },
+  { text: '"From start to finish, the experience was seamless. They brought our dream home to life exactly as we envisioned."', author: '— Neha Gupta, Hyderabad', img: remote.photo_1489424731084_a5d8b219a5bb },
 ]
 
 export default function Home() {
@@ -61,11 +64,21 @@ export default function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <>
       <section className="hero">
         <div className="hero-bg">
-          <img ref={imgRef} src={heroBg} alt="Minimalist Green Wall Living Room" style={{ objectPosition: 'left center' }} />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={mobileHeroBg} />
+            <img ref={imgRef} src={heroBg} alt="Minimalist Green Wall Living Room" style={{ objectPosition: 'left center' }} />
+          </picture>
         </div>
         <div className="container">
           <div ref={contentRef} className="hero-content" style={{ marginLeft: '0' }}>
@@ -196,8 +209,8 @@ export default function Home() {
               <button onClick={() => setTestimonialIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))} style={{ background: '#D8C8B2', border: 'none', width: '46px', height: '46px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#557165', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
                 <i className="fas fa-chevron-left"></i>
               </button>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '32px', background: '#D8C8B2', padding: '28px 70px 28px 95px', borderRadius: '16px', boxShadow: '0 15px 40px rgba(216, 200, 178, 0.25)', flex: '0 0 auto', minWidth: '300px', maxWidth: '520px', height: '180px', position: 'relative', border: '1px solid rgba(255,255,255,0.4)' }}>
-                <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '32px', background: '#D8C8B2', padding: '28px 95px 28px 95px', borderRadius: '16px', boxShadow: '0 15px 40px rgba(216, 200, 178, 0.25)', flex: '0 0 auto', minWidth: '320px', maxWidth: '560px', height: '180px', position: 'relative', border: '1px solid rgba(255,255,255,0.4)' }}>
+                <div style={{ flex: 1, paddingRight: '10px' }}>
                   <div style={{ display: 'flex', gap: '4px', marginBottom: '10px', color: '#557165' }}>
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
@@ -205,10 +218,10 @@ export default function Home() {
                     <i className="fas fa-star"></i>
                     <i className="fas fa-star"></i>
                   </div>
-                  <p style={{ color: '#2d2d2d', fontSize: '1.05rem', marginBottom: '8px', fontStyle: 'italic', lineHeight: '1.7' }}>{testimonials[testimonialIndex].text}</p>
-                  <p style={{ color: '#557165', fontSize: '0.95rem', fontWeight: '600' }}>{testimonials[testimonialIndex].author}</p>
+                  <p style={{ color: '#2d2d2d', fontSize: '0.98rem', marginBottom: '8px', fontStyle: 'italic', lineHeight: '1.6' }}>{testimonials[testimonialIndex].text}</p>
+                  <p style={{ color: '#557165', fontSize: '0.9rem', fontWeight: '600' }}>{testimonials[testimonialIndex].author}</p>
                 </div>
-                <img src={testimonials[testimonialIndex].img} alt="User" style={{ width: '68px', height: '68px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #557165', flexShrink: 0, position: 'absolute', right: '20px' }} />
+                <img src={testimonials[testimonialIndex].img} alt="User" style={{ width: '68px', height: '68px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #557165', flexShrink: 0, position: 'absolute', right: '16px' }} />
               </div>
               <button onClick={() => setTestimonialIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))} style={{ background: '#D8C8B2', border: 'none', width: '46px', height: '46px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#557165', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)', flexShrink: 0 }}>
                 <i className="fas fa-chevron-right"></i>
