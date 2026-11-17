@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import { remote } from '../assets/images/remote'
+import { useBrand, withBrandPath } from '../brand'
 
 const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Retail']
 
@@ -26,6 +27,8 @@ export default function Portfolio() {
   const [active, setActive] = useState('All')
   const [filtered, setFiltered] = useState(projects)
   const [activeProject, setActiveProject] = useState(null)
+  const { path: brandPath } = useBrand()
+  const to = (route) => withBrandPath(brandPath, route)
 
   useEffect(() => {
     if (!activeProject) return
@@ -108,7 +111,7 @@ export default function Portfolio() {
                 <span><i className="fas fa-layer-group"></i> {activeProject.cat}</span>
               </div>
               <p>{activeProject.description}</p>
-              <Link to="/book-consultation" className="btn btn-primary">Discuss a Similar Project <i className="fas fa-arrow-right"></i></Link>
+              <Link to={to('/book-consultation')} className="btn btn-primary">Discuss a Similar Project <i className="fas fa-arrow-right"></i></Link>
             </div>
           </div>
         )}

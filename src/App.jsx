@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
 import LoadingScreen from './components/LoadingScreen'
+import BrandProvider from './BrandProvider'
+import { getBrand } from './brand'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -14,6 +16,18 @@ import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import BookConsultation from './pages/BookConsultation'
 
+const routes = [
+  { path: '/', element: <Home /> },
+  { path: '/about', element: <About /> },
+  { path: '/services', element: <Services /> },
+  { path: '/portfolio', element: <Portfolio /> },
+  { path: '/gallery', element: <Gallery /> },
+  { path: '/testimonials', element: <Testimonials /> },
+  { path: '/faq', element: <Faq /> },
+  { path: '/contact', element: <Contact /> },
+  { path: '/book-consultation', element: <BookConsultation /> },
+]
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
@@ -23,6 +37,8 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
+  const brand = getBrand(pathname)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -30,26 +46,28 @@ export default function App() {
     return () => clearTimeout(timer)
   }, [])
 
+  useEffect(() => {
+    document.title = brand.title
+  }, [brand.title])
+
   return (
-    <>
+    <BrandProvider brand={brand}>
       {loading && <LoadingScreen />}
       <ScrollToTop />
       <Navbar />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/testimonials" element={<Testimonials />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/book-consultation" element={<BookConsultation />} />
+          {routes.map((route) => (
+            <Route
+              key={`${brand.path}${route.path}`}
+              path={`${brand.path}${route.path === '/' ? '' : route.path}` || '/'}
+              element={route.element}
+            />
+          ))}
         </Routes>
       </main>
       <Footer />
       <BackToTop />
-    </>
+    </BrandProvider>
   )
 }

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import ScrollReveal from '../components/ScrollReveal'
 import { remote } from '../assets/images/remote'
+import { useBrand } from '../brand'
 
 export default function BookConsultation() {
   const [selectedDate, setSelectedDate] = useState('')
@@ -14,6 +15,7 @@ export default function BookConsultation() {
   const [projectBudget, setProjectBudget] = useState('')
   const [showProjectBudget, setShowProjectBudget] = useState(false)
   const projectBudgetRef = useRef(null)
+  const { fullName, phone, email } = useBrand()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -99,7 +101,7 @@ export default function BookConsultation() {
               <p>Schedule a complimentary consultation with our design team. We'll explore your vision, discuss possibilities, and outline the next steps to bring your dream space to life.</p>
 
               <div className="consultation-image">
-                <img src={remote.photo_1600607687939_ce8a6c25118c} alt="A beautifully designed interior by Roopam Interiors" />
+                <img src={remote.photo_1600607687939_ce8a6c25118c} alt={`A beautifully designed interior by ${fullName}`} />
                 <div className="consultation-image-caption">
                   <i className="fas fa-quote-left"></i>
                   <span>Every great space begins with a conversation.</span>
@@ -149,14 +151,14 @@ export default function BookConsultation() {
                   <div className="icon"><i className="fas fa-phone-alt"></i></div>
                   <div>
                     <h4>Prefer to call?</h4>
-                    <p>90354 99777</p>
+                    <p>{phone}</p>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="icon"><i className="fas fa-envelope"></i></div>
                   <div>
                     <h4>Prefer to email?</h4>
-                    <p>hello@roopaminteriors.com</p>
+                    <p>{email}</p>
                   </div>
                 </div>
               </div>

@@ -6,6 +6,7 @@ import Parallax from '../components/Parallax'
 import heroBg from '../assets/images/Minimalist Green Wall Living Room.webp'
 import mobileHeroBg from '../assets/images/mobile.png'
 import { remote } from '../assets/images/remote'
+import { useBrand, withBrandPath } from '../brand'
 
 const services = [
   { icon: 'fa-solid fa-house-chimney', title: 'Residential Design', desc: 'Beautiful, functional homes tailored to your lifestyle and taste.', img: remote.photo_1600607687939_ce8a6c25118c },
@@ -37,6 +38,8 @@ export default function Home() {
   const imgRef = useRef(null)
   const contentRef = useRef(null)
   const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const { fullName, path: brandPath } = useBrand()
+  const to = (route) => withBrandPath(brandPath, route)
 
   useEffect(() => {
     const img = imgRef.current
@@ -86,8 +89,8 @@ export default function Home() {
             <h1 className="hero-title">Designing Spaces That <span>Inspire</span> & Elevate</h1>
             <p className="hero-desc">We craft bespoke interiors that blend timeless elegance with modern sophistication, transforming your vision into extraordinary living spaces.</p>
             <div className="hero-actions">
-              <Link to="/portfolio" className="btn btn-primary">View Our Work <i className="fas fa-arrow-right"></i></Link>
-              <Link to="/book-consultation" className="btn btn-outline-light">Book Consultation</Link>
+              <Link to={to('/portfolio')} className="btn btn-primary">View Our Work <i className="fas fa-arrow-right"></i></Link>
+              <Link to={to('/book-consultation')} className="btn btn-outline-light">Book Consultation</Link>
             </div>
           </div>
         </div>
@@ -103,7 +106,7 @@ export default function Home() {
           <div className="about-intro" style={{ direction: 'rtl', alignItems: 'stretch', overflow: 'visible', gap: '60px' }}>
             <Parallax speed={0.12}>
             <div className="about-intro-image" style={{ direction: 'ltr', height: '100%', position: 'relative', overflow: 'visible', borderRadius: '20px' }}>
-              <img src={remote.photo_1616486338812_3dadae4b4ace} alt="About Roopam Interiors" style={{ height: '100%', objectFit: 'cover', borderRadius: '20px', display: 'block' }} />
+              <img src={remote.photo_1616486338812_3dadae4b4ace} alt={`About ${fullName}`} style={{ height: '100%', objectFit: 'cover', borderRadius: '20px', display: 'block' }} />
               <div className="experience-badge" style={{ position: 'absolute', left: '-40px', bottom: '40px', zIndex: 10, background: 'var(--secondary)', color: '#ffffff', border: 'none', boxShadow: '0 4px 12px rgba(107, 159, 129, 0.4)', borderRadius: '14px', padding: '18px 26px' }}>
                 <div className="number" style={{ color: '#ffffff' }}>15+</div>
                 <div className="label" style={{ color: '#ffffff' }}>Years Experience</div>
@@ -115,7 +118,7 @@ export default function Home() {
               <div>
                 <span className="section-tag">About Us</span>
                 <h2 style={{ lineHeight: '1.15', marginBottom: '16px' }}>Where Elegance<br />Meets Everyday Living</h2>
-                <p>Roopam Interiors is a premier design studio dedicated to crafting extraordinary spaces that blend timeless elegance with modern functionality. Our award-winning team brings precision, creativity, and passion to every project—big or small.</p>
+                <p>{fullName} is a premier design studio dedicated to crafting extraordinary spaces that blend timeless elegance with modern functionality. Our award-winning team brings precision, creativity, and passion to every project—big or small.</p>
                 <p>We believe great design transforms lives. From concept to completion, we work closely with clients to create interiors that reflect their style, enhance comfort, and stand the test of time.</p>
               </div>
               <div className="about-features" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
@@ -158,13 +161,13 @@ export default function Home() {
                 <div className="icon"><i className={s.icon}></i></div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
-                <Link to="/services" className="service-link">Learn More <i className="fas fa-arrow-right"></i></Link>
+                <Link to={to('/services')} className="service-link">Learn More <i className="fas fa-arrow-right"></i></Link>
               </div>
               </Parallax>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link to="/services" className="btn btn-outline">View All Services <i className="fas fa-arrow-right"></i></Link>
+            <Link to={to('/services')} className="btn btn-outline">View All Services <i className="fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </section>
@@ -190,7 +193,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link to="/portfolio" className="btn btn-outline">View Full Portfolio <i className="fas fa-arrow-right"></i></Link>
+            <Link to={to('/portfolio')} className="btn btn-outline">View Full Portfolio <i className="fas fa-arrow-right"></i></Link>
           </div>
         </div>
       </section>

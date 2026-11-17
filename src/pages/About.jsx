@@ -2,6 +2,7 @@ import PageHero from '../components/PageHero'
 import CtaSection from '../components/CtaSection'
 import ScrollReveal from '../components/ScrollReveal'
 import { remote } from '../assets/images/remote'
+import { useBrand } from '../brand'
 
 const team = [
   { img: remote.photo_1573496359142_b8d87734a5a2, name: 'Priya Sharma', role: 'Founder & Principal Designer', desc: 'Visionary designer with 20+ years of experience in luxury interiors.' },
@@ -11,6 +12,8 @@ const team = [
 ]
 
 export default function About() {
+  const { fullName } = useBrand()
+
   return (
     <>
       <PageHero title="About Us" />
@@ -29,7 +32,7 @@ export default function About() {
             <div className="about-intro-text">
               <span className="section-tag">Our Story</span>
               <h2>Passion Meets Precision in Every Space</h2>
-              <p>Founded in 2009, Roopam Interiors has grown from a small design studio into one of the most respected interior design firms in the country. Our journey has been defined by a relentless pursuit of excellence and an unwavering commitment to our clients' vision.</p>
+              <p>Founded in 2009, {fullName} has grown from a small design studio into one of the most respected interior design firms in the country. Our journey has been defined by a relentless pursuit of excellence and an unwavering commitment to our clients' vision.</p>
               <p>We believe that great design is not just about aesthetics—it's about creating spaces that enhance the way people live, work, and connect. Every project we undertake is a collaboration, a dialogue between our expertise and your dreams.</p>
               <p>Our team of talented designers, architects, and craftsmen brings together diverse perspectives and specialized skills to deliver interiors that are both beautiful and functional.</p>
               <div className="about-features" style={{ marginTop: '32px' }}>

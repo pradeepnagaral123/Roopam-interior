@@ -1,7 +1,10 @@
 import PageHero from '../components/PageHero'
 import ScrollReveal from '../components/ScrollReveal'
+import { useBrand } from '../brand'
 
 export default function Contact() {
+  const { addressLines, phone, email, hours } = useBrand()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     alert('Thank you for your message! We will get back to you shortly.')
@@ -24,28 +27,28 @@ export default function Contact() {
                   <div className="icon"><i className="fas fa-map-marker-alt"></i></div>
                   <div>
                     <h4>Our Studio</h4>
-                    <p>1526, Maruti Galli, opposite Sheetal Medicals<br />Ravivar Peth, Belagavi, Karnataka 590001</p>
+                    <p>{addressLines[0]}<br />{addressLines[1]}</p>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="icon"><i className="fas fa-phone-alt"></i></div>
                   <div>
                     <h4>Phone</h4>
-                    <p>90354 99777</p>
+                    <p>{phone}</p>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="icon"><i className="fas fa-envelope"></i></div>
                   <div>
                     <h4>Email</h4>
-                    <p>hello@roopaminteriors.com</p>
+                    <p>{email}</p>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="icon"><i className="fas fa-clock"></i></div>
                   <div>
                     <h4>Working Hours</h4>
-                    <p>Mon — Sat: 10:00 AM — 7:00 PM</p>
+                    <p>{hours}</p>
                   </div>
                 </div>
               </div>

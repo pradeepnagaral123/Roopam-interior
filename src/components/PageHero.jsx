@@ -1,9 +1,12 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useBrand, withBrandPath } from '../brand'
 import heroBg from '../assets/images/Minimalist Green Wall Living Room.webp'
 
 export default function PageHero({ title, bgImage }) {
   const imgRef = useRef(null)
+  const { path: brandPath } = useBrand()
+  const to = (route) => withBrandPath(brandPath, route)
 
   useEffect(() => {
     const img = imgRef.current
@@ -25,7 +28,7 @@ export default function PageHero({ title, bgImage }) {
       <div className="container">
         <h1 className="page-hero-title">{title}</h1>
         <div className="page-hero-breadcrumb">
-          <Link to="/">Home</Link>
+          <Link to={to('/')}>Home</Link>
           <span className="separator">/</span>
           <span>{title}</span>
         </div>
