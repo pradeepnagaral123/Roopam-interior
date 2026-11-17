@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import ScrollReveal from '../components/ScrollReveal'
+import { remote } from '../assets/images/remote'
 
 export default function BookConsultation() {
   const [selectedDate, setSelectedDate] = useState('')
@@ -96,6 +97,14 @@ export default function BookConsultation() {
             <div className="consultation-info">
               <h2>Let's Discuss Your <span>Dream Space</span></h2>
               <p>Schedule a complimentary consultation with our design team. We'll explore your vision, discuss possibilities, and outline the next steps to bring your dream space to life.</p>
+
+              <div className="consultation-image">
+                <img src={remote.photo_1600607687939_ce8a6c25118c} alt="A beautifully designed interior by Roopam Interiors" />
+                <div className="consultation-image-caption">
+                  <i className="fas fa-quote-left"></i>
+                  <span>Every great space begins with a conversation.</span>
+                </div>
+              </div>
               
               <div className="consultation-benefits">
                 <div className="benefit-item">
